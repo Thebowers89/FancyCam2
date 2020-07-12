@@ -1,0 +1,10 @@
+name: FancyCam2
+version: 0.2
+main: FancyCam.MainClass
+commands:
+  addloop:
+    usage: addloop <bounce/normal> <loop-id> <radius> [height] [speed] [bounce:frequency]
+    description:
+  loop:
+    usage: loop <start/stop/list> <loop-id>
+    description:
