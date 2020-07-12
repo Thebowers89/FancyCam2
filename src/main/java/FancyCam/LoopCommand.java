@@ -19,6 +19,7 @@ public class LoopCommand implements CommandExecutor {
                     String id = strings[1];
                     if (strings[0].equalsIgnoreCase("start")) {
                         LoopHandler.startLoop(id, player);
+                        player.sendMessage("Starting loop...");
                     } else if (strings[0].equalsIgnoreCase("remove")) {
                         LoopHandler.removeLoop(id);
                         player.sendMessage("Removed loop with id of: " + id);
