@@ -18,6 +18,7 @@ public class AddLoopCommand implements CommandExecutor {
 
     private final double interval = 0.01;
 
+    // TODO refractor and cleanup later
     // addloop <bounce/normal> <id> <radius> [height] [speed] [bounce:frequency]
 
     public boolean onCommand(CommandSender commandSender, Command command, String s, String[] strings) {
@@ -34,14 +35,14 @@ public class AddLoopCommand implements CommandExecutor {
                         case 5:
                             height = Double.parseDouble(strings[3]);
                             speed = Double.parseDouble(strings[4]);
-                            standard(id, player.getLocation(), radius, height, speed);
+                            standard2(id, player.getLocation(), radius, height, speed);
                             break;
                         case 4:
                             height = Double.parseDouble(strings[3]);
-                            standard(id, player.getLocation(), radius, height, speed);
+                            standard2(id, player.getLocation(), radius, height, speed);
                             break;
                         case 3:
-                            standard(id, player.getLocation(), radius, height, speed);
+                            standard2(id, player.getLocation(), radius, height, speed);
                             break;
                         default:
                             player.sendMessage("Invalid Arguments");
@@ -66,19 +67,19 @@ public class AddLoopCommand implements CommandExecutor {
                             frequency = Double.parseDouble(strings[5]);
                             height = Double.parseDouble(strings[3]);
                             speed = Double.parseDouble(strings[4]);
-                            bouncy(id, player.getLocation(), radius, height, speed, frequency);
+                            bouncy2(id, player.getLocation(), radius, height, speed, frequency);
                             break;
                         case 5:
                             height = Double.parseDouble(strings[3]);
                             speed = Double.parseDouble(strings[4]);
-                            bouncy(id, player.getLocation(), radius, height, speed, frequency);
+                            bouncy2(id, player.getLocation(), radius, height, speed, frequency);
                             break;
                         case 4:
-                            height = Double.parseDouble(strings[4]);
-                            bouncy(id, player.getLocation(), radius, height, speed, frequency);
+                            height = Double.parseDouble(strings[3]);
+                            bouncy2(id, player.getLocation(), radius, height, speed, frequency);
                             break;
                         case 3:
-                            bouncy(id, player.getLocation(), radius, height, speed, frequency);
+                            bouncy2(id, player.getLocation(), radius, height, speed, frequency);
                             break;
                         default:
                             player.sendMessage("Invalid Arguments");
@@ -101,6 +102,10 @@ public class AddLoopCommand implements CommandExecutor {
         return false;
     }
 
+    public void bouncy2(String id, Location origin, double radius, double height, double speed, double frequency) {
+        LoopHandler.addLoop(new Loop(origin, id, "bounce", radius, height, speed, frequency));
+    }
+
     public void bouncy(String id, Location origin, double radius, double height, double speed, double frequency) {
         List<Location> list = new ArrayList<Location>();
         for (double i = 0; i < 360; i+=interval*speed) {
@@ -119,6 +124,10 @@ public class AddLoopCommand implements CommandExecutor {
             list.add(l);
         }
         LoopHandler.addLoop(new Loop(id, list));
+    }
+
+    public void standard2(String id, Location origin, double radius, double height, double speed) {
+        LoopHandler.addLoop(new Loop(origin, id, "normal", radius, height, speed, 0));
     }
 
     public void standard(String id, Location origin, double radius, double height, double speed) {

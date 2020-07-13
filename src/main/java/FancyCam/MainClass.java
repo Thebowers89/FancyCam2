@@ -7,7 +7,6 @@ public class MainClass extends JavaPlugin {
     public static MainClass plugin;
 
     public void onEnable() {
-
         plugin = this;
         registerEvents();
         registerCommands();

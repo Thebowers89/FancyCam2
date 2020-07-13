@@ -32,14 +32,15 @@ public class LoopHandler {
             cameras.get(player.getUniqueId()).removeCamera();
         }
         if (l != null) {
-            l.startLoop(player);
             cameras.put(player.getUniqueId(), l);
+            l.startLoop2(player);
         }
     }
 
     public static void stopLoop(Player player) {
         if (cameras.containsKey(player.getUniqueId())) {
             cameras.get(player.getUniqueId()).removeCamera();
+            cameras.get(player.getUniqueId()).stop();
             player.sendMessage("Stopping Loop...");
         } else {
             player.sendMessage("Loop does not exist!");
