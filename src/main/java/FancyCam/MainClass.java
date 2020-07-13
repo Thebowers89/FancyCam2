@@ -1,6 +1,5 @@
 package FancyCam;
 
-import FancyCam.Utils.LoopHandler;
 import org.bukkit.plugin.java.JavaPlugin;
 
 public class MainClass extends JavaPlugin {
