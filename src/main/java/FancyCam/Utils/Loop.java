@@ -67,10 +67,7 @@ public class Loop implements Runnable {
             Location l = new Location(origin.getWorld(), x, origin.getY(), z);
 
             double number = Math.cos(frequency * i);
-            if (this.type.equalsIgnoreCase("bounce")) {
-                l.setY(l.getY() + (number * height));
-            }
-
+            l.setY(l.getY() + (number * height));
             l.setPitch(getPitch(l, origin));
             l.setYaw(getHeading(l, origin));
 
