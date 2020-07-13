@@ -30,11 +30,6 @@ public class Loop implements Runnable {
 
     private double interval = 0.01;
 
-    public Loop(String id, List<Location> loop) {
-        this.id = id;
-        this.loop = loop;
-    }
-
     public Loop(Location origin, String id, String type, double radius, double height, double speed, double frequency) {
         this.origin = origin;
         this.id = id;
@@ -51,11 +46,6 @@ public class Loop implements Runnable {
 
     public UUID getCamera() {
         return this.camera.getUniqueId();
-    }
-
-    public void startLoop(Player camera) {
-        this.camera = camera;
-        this.bt = Bukkit.getScheduler().runTaskTimer(MainClass.plugin, this, 0, 1);
     }
 
     public void startLoop2(Player camera) {
@@ -99,4 +89,45 @@ public class Loop implements Runnable {
             i++;
         }
     }
+
+    public Location getOrigin() {
+        return this.origin;
+    }
+
+    public void setOrigin(Location newOrigin) {
+        this.origin = newOrigin;
+    }
+
+    public double getRadius() {
+        return this.radius;
+    }
+
+    public void setRadius(double newRadius) {
+        this.radius = newRadius;
+    }
+
+    public double getHeight() {
+        return this.height;
+    }
+
+    public void setHeight(double newHeight) {
+        this.height = newHeight;
+    }
+
+    public double getSpeed() {
+        return this.speed;
+    }
+
+    public void setSpeed(double newSpeed) {
+        this.speed = newSpeed;
+    }
+
+    public double getFrequency() {
+        return this.frequency;
+    }
+
+    public void setFrequency(double newFreq) {
+        this.frequency = newFreq;
+    }
+
 }

@@ -31,7 +31,7 @@ public class LoopCommand implements CommandExecutor {
                         player.sendMessage(LoopHandler.getLoops());
                     }
                 }
-                return true;
+                return false;
             }
         }
         return false;

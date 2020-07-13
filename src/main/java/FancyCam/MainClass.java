@@ -19,6 +19,7 @@ public class MainClass extends JavaPlugin {
     private void registerCommands() {
         getCommand("addloop").setExecutor(new AddLoopCommand());
         getCommand("loop").setExecutor(new LoopCommand());
+        getCommand("editloop").setExecutor(new EditLoopCommand());
     }
 
     private void registerEvents() {

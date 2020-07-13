@@ -2,29 +2,26 @@ package FancyCam;
 
 import FancyCam.Utils.Loop;
 import FancyCam.Utils.LoopHandler;
+import org.bukkit.ChatColor;
 import org.bukkit.Location;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 
-import java.util.ArrayList;
-import java.util.List;
-
-import static FancyCam.Utils.Utils.getHeading;
-import static FancyCam.Utils.Utils.getPitch;
-
 public class AddLoopCommand implements CommandExecutor {
 
     private final double interval = 0.01;
 
-    // TODO refractor and cleanup later
     // addloop <bounce/normal> <id> <radius> [height] [speed] [bounce:frequency]
 
     public boolean onCommand(CommandSender commandSender, Command command, String s, String[] strings) {
         if (commandSender instanceof Player) {
             Player player = (Player) commandSender;
             if (player.hasPermission("FancyCam.addloop") || player.isOp()) {
+                if (strings.length == 0) {
+                    return false;
+                }
                 if (strings[0].equalsIgnoreCase("normal")) {
                     boolean success = true;
                     double height = 0;
@@ -93,10 +90,12 @@ public class AddLoopCommand implements CommandExecutor {
                                 + "\n  Speed: " + speed
                                 + "\n  Frequency: " + frequency);
                     }
+                } else {
+                    player.sendMessage(String.format(ChatColor.RED + "%s is not a valid type, try 'normal' or 'bounce'", strings[0]));
+                    return true;
                 }
-                return true;
             }
-            player.sendMessage("Not enough strings");
+            player.sendMessage("You do not have permission to execute this command!");
             return true;
         }
         return false;
@@ -106,44 +105,7 @@ public class AddLoopCommand implements CommandExecutor {
         LoopHandler.addLoop(new Loop(origin, id, "bounce", radius, height, speed, frequency));
     }
 
-    public void bouncy(String id, Location origin, double radius, double height, double speed, double frequency) {
-        List<Location> list = new ArrayList<Location>();
-        for (double i = 0; i < 360; i+=interval*speed) {
-            double radians = i;
-            double x = origin.getX() + radius * Math.cos(radians);
-            double z = origin.getZ() - radius * Math.sin(radians);
-
-            Location l = new Location(origin.getWorld(), x, origin.getY(), z);
-
-            double number = Math.cos(frequency*i);
-
-            l.setY(l.getY() + (number * height));
-            l.setPitch(getPitch(l, origin));
-            l.setYaw(getHeading(l, origin));
-
-            list.add(l);
-        }
-        LoopHandler.addLoop(new Loop(id, list));
-    }
-
     public void standard2(String id, Location origin, double radius, double height, double speed) {
         LoopHandler.addLoop(new Loop(origin, id, "normal", radius, height, speed, 0));
     }
-
-    public void standard(String id, Location origin, double radius, double height, double speed) {
-        List<Location> list = new ArrayList<Location>();
-        for (double i = 0; i < 360; i+=interval*speed) {
-            double radians = i;
-            double x = origin.getX() + radius * Math.cos(radians);
-            double z = origin.getZ() - radius * Math.sin(radians);
-
-            Location l = new Location(origin.getWorld(), x, origin.getY() + height, z);
-            l.setPitch(getPitch(l, origin));
-            l.setYaw(getHeading(l, origin));
-
-            list.add(l);
-        }
-        LoopHandler.addLoop(new Loop(id, list));
-    }
-
 }

@@ -3,8 +3,11 @@ version: 0.2
 main: FancyCam.MainClass
 commands:
   addloop:
-    usage: "addloop <bounce/normal> <loop-id> <radius> [height] [speed] [bounce:frequency]"
+    usage: "Usage: /addloop <bounce/normal> <loop-id> <radius> [height] [speed] [bounce:frequency]"
     description:
   loop:
-    usage: "loop <start/stop/list> <loop-id>"
+    usage: "Usage: /loop <start> <loop-id> or /loop <stop/list>"
+    description:
+  editloop:
+    usage: "Usage: /editloop <id> <stat> <newvalue>"
     description:
