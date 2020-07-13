@@ -9,8 +9,13 @@ public class LoopHandler {
     public static List<Loop> loops = new ArrayList<Loop>();
     public static Map<UUID, Loop> cameras = new HashMap<UUID, Loop>();
 
-    public static void addLoop(Loop loop) {
-        loops.add(loop);
+    public static boolean addLoop(Loop loop) {
+        if (!doesExist(loop.getId())) {
+            loops.add(loop);
+            return true;
+        } else {
+            return false;
+        }
     }
 
     public static void removeLoop(String id) {
