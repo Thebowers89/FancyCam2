@@ -20,15 +20,19 @@ public class LoopCommand implements CommandExecutor {
                     if (strings[0].equalsIgnoreCase("start")) {
                         LoopHandler.startLoop(id, player);
                         player.sendMessage("Starting loop...");
+                        return true;
                     } else if (strings[0].equalsIgnoreCase("remove")) {
                         LoopHandler.removeLoop(id);
                         player.sendMessage("Removed loop with id of: " + id);
+                        return true;
                     }
                 } else if (strings.length == 1) {
                     if (strings[0].equalsIgnoreCase("stop")) {
                         LoopHandler.stopLoop(player);
+                        return true;
                     } else if (strings[0].equalsIgnoreCase("list")) {
                         player.sendMessage(LoopHandler.getLoops());
+                        return true;
                     }
                 }
                 return false;
