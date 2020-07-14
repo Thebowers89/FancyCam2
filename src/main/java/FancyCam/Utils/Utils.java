@@ -31,9 +31,7 @@ public class Utils {
     //Call this method to get the heading for the projectile
     public static float getHeading(Location p, Location t) {
         float angle = getAngleX(p, t);
-        float I = 0;
         float II = -90;
-        float III = 180;
         float IV = 90;
         if (t.getZ() > p.getZ()) {
             if (t.getX() > p.getX()) {

@@ -1,7 +1,7 @@
 package FancyCam;
 
 import FancyCam.Utils.LoopHandler;
-import FancyCam.Utils.TestCommand;
+import FancyCam.Utils.SaveLoops;
 import de.leonhard.storage.LightningBuilder;
 import de.leonhard.storage.Yaml;
 import de.leonhard.storage.internal.settings.ReloadSettings;
@@ -35,7 +35,7 @@ public class MainClass extends JavaPlugin {
     }
 
     private void registerCommands() {
-        getCommand("looptest").setExecutor(new TestCommand());
+        getCommand("looptest").setExecutor(new SaveLoops());
         getCommand("addloop").setExecutor(new AddLoopCommand());
         getCommand("loop").setExecutor(new LoopCommand());
         getCommand("editloop").setExecutor(new EditLoopCommand());
