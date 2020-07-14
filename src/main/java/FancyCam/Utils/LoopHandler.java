@@ -1,8 +1,12 @@
 package FancyCam.Utils;
 
+import org.bukkit.Bukkit;
+import org.bukkit.Location;
 import org.bukkit.entity.Player;
 
 import java.util.*;
+
+import static FancyCam.MainClass.saveFile;
 
 public class LoopHandler {
 
@@ -15,6 +19,33 @@ public class LoopHandler {
             return true;
         } else {
             return false;
+        }
+    }
+
+    public static void saveLoops() {
+        saveFile.clear();
+        for (Loop loop : loops) {
+            loop.saveLoop();
+        }
+    }
+
+    public static void loadLoops() {
+        for (String key : saveFile.singleLayerKeySet("Loops")) {
+            saveFile.setPathPrefix("Loops." + key);
+            Location origin = new Location(
+                    Bukkit.getWorld(saveFile.getString("origin.world")),
+                    saveFile.getDouble("origin.x"),
+                    saveFile.getDouble("origin.y"),
+                    saveFile.getDouble("origin.z")
+            );
+            addLoop(new Loop(origin,
+                    key,
+                    saveFile.getString("type"),
+                    saveFile.getDouble("radius"),
+                    saveFile.getDouble("height"),
+                    saveFile.getDouble("speed"),
+                    saveFile.getDouble("frequency")
+            ));
         }
     }
 
