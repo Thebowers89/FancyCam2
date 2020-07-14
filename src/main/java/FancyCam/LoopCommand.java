@@ -1,6 +1,7 @@
 package FancyCam;
 
 import FancyCam.Utils.LoopHandler;
+import org.bukkit.ChatColor;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
@@ -23,7 +24,7 @@ public class LoopCommand implements CommandExecutor {
                         return true;
                     } else if (strings[0].equalsIgnoreCase("remove")) {
                         LoopHandler.removeLoop(id);
-                        player.sendMessage("Removed loop with id of: " + id);
+                        player.sendMessage(ChatColor.translateAlternateColorCodes('&', "&c&lRemoved loop with id of: &r&4" + id));
                         return true;
                     }
                 } else if (strings.length == 1) {
@@ -31,7 +32,7 @@ public class LoopCommand implements CommandExecutor {
                         LoopHandler.stopLoop(player);
                         return true;
                     } else if (strings[0].equalsIgnoreCase("list")) {
-                        player.sendMessage(LoopHandler.getLoops());
+                        player.sendMessage(ChatColor.translateAlternateColorCodes('&', LoopHandler.getLoops()));
                         return true;
                     }
                 }
