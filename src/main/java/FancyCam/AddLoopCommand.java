@@ -11,7 +11,7 @@ import org.bukkit.entity.Player;
 
 public class AddLoopCommand implements CommandExecutor {
 
-    // addloop <bounce/normal> <id> <radius> [height] [speed] [bounce:frequency]
+    //  addloop <bounce/normal> <id> <radius> [height] [speed] [bounce:frequency]
 
     public boolean onCommand(CommandSender commandSender, Command command, String s, String[] strings) {
         if (commandSender instanceof Player) {
