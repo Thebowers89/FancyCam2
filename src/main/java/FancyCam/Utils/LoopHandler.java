@@ -1,5 +1,6 @@
 package FancyCam.Utils;
 
+import org.bukkit.ChatColor;
 import org.bukkit.entity.Player;
 
 import java.util.*;
@@ -48,14 +49,12 @@ public class LoopHandler {
             cameras.get(player.getUniqueId()).stop();
             player.sendMessage("Stopping Loop...");
         } else {
-            player.sendMessage("Loop does not exist!");
+            player.sendMessage(ChatColor.RED + "Loop does not exist!");
         }
     }
 
     public static boolean doesExist(String id) {
-        System.out.println("Target id: " + id);
         for (Loop l : loops) {
-            System.out.println("loop id " + l.getId());
             if (l.getId().equalsIgnoreCase(id)) {
                 return true;
             }
@@ -64,9 +63,9 @@ public class LoopHandler {
     }
 
     public static String getLoops() {
-        String out = "List of current loops:\n";
+        String out = "&6List of current loops:\n";
         for (Loop l : loops) {
-            out += "  " + l.getId() + "\n";
+            out += "  &a" + l.getId() + "\n";
         }
         return out;
     }

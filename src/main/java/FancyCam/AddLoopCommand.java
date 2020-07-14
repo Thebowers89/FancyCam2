@@ -30,32 +30,29 @@ public class AddLoopCommand implements CommandExecutor {
                             height = Double.parseDouble(strings[3]);
                             speed = Double.parseDouble(strings[4]);
                             if (!standard2(id, player.getLocation(), radius, height, speed)) {
-                                player.sendMessage("A loop with that ID already exists!");
+                                player.sendMessage(ChatColor.RED + "A loop with that ID already exists!");
                                 return true;
                             }
                             break;
                         case 4:
                             height = Double.parseDouble(strings[3]);
                             if (!standard2(id, player.getLocation(), radius, height, speed)) {
-                                player.sendMessage("A loop with that ID already exists!");
+                                player.sendMessage(ChatColor.RED + "A loop with that ID already exists!");
                                 return true;
                             }
                             break;
                         case 3:
                             if (!standard2(id, player.getLocation(), radius, height, speed)) {
-                                player.sendMessage("A loop with that ID already exists!");
+                                player.sendMessage(ChatColor.RED + "A loop with that ID already exists!");
                                 return true;
                             }
                             break;
                         default:
-                            player.sendMessage("Invalid Arguments");
+                            player.sendMessage(ChatColor.RED + "Invalid Arguments");
                             return false;
                     }
-                    player.sendMessage("Created a loop with stats:\n  ID: " + strings[1]
-                            + "\n  Type: " + strings[0]
-                            + "\n  Radius: " + radius
-                            + "\n  Height: " + height
-                            + "\n  Speed: " + speed);
+                    String message = String.format("&6Created a loop with the stats:\n  ID: &a%s\n  &6Type: &a%s\n  &6Radius:  &a%s\n  &6Height:  &a%s\n  &6Speed: &a%s", strings[1], strings[0], radius, height, speed);
+                    player.sendMessage(ChatColor.translateAlternateColorCodes('&', message));
                     return true;
                 } else if (strings[0].equalsIgnoreCase("bounce")) {
                     double height = 1;
@@ -69,7 +66,7 @@ public class AddLoopCommand implements CommandExecutor {
                             height = Double.parseDouble(strings[3]);
                             speed = Double.parseDouble(strings[4]);
                             if (!bouncy2(id, player.getLocation(), radius, height, speed, frequency)) {
-                                player.sendMessage("A loop with that ID already exists!");
+                                player.sendMessage(ChatColor.RED + "A loop with that ID already exists!");
                                 return true;
                             }
                             break;
@@ -77,33 +74,29 @@ public class AddLoopCommand implements CommandExecutor {
                             height = Double.parseDouble(strings[3]);
                             speed = Double.parseDouble(strings[4]);
                             if (!bouncy2(id, player.getLocation(), radius, height, speed, frequency)) {
-                                player.sendMessage("A loop with that ID already exists!");
+                                player.sendMessage(ChatColor.RED + "A loop with that ID already exists!");
                                 return true;
                             }
                             break;
                         case 4:
                             height = Double.parseDouble(strings[3]);
                             if (!bouncy2(id, player.getLocation(), radius, height, speed, frequency)) {
-                                player.sendMessage("A loop with that ID already exists!");
+                                player.sendMessage(ChatColor.RED + "A loop with that ID already exists!");
                                 return true;
                             }
                             break;
                         case 3:
                             if (!bouncy2(id, player.getLocation(), radius, height, speed, frequency)) {
-                                player.sendMessage("A loop with that ID already exists!");
+                                player.sendMessage(ChatColor.RED + "A loop with that ID already exists!");
                                 return true;
                             }
                             break;
                         default:
-                            player.sendMessage("Invalid Arguments");
+                            player.sendMessage(ChatColor.RED + "Invalid Arguments");
                             return false;
                     }
-                    player.sendMessage("Created a loop with stats:\n  ID: " + strings[1]
-                            + "\n  Type: " + strings[0]
-                            + "\n  Radius: " + radius
-                            + "\n  Height: " + height
-                            + "\n  Speed: " + speed
-                            + "\n  Frequency: " + frequency);
+                    String message = String.format("&6Created a loop with the stats:\n  ID: &a%s\n  &6Type: &a%s\n  &6Radius:  &a%s\n  &6Height:  &a%s\n  &6Speed: &a%s\n  &6Frequency: &a%s", strings[1], strings[0], radius, height, speed, frequency);
+                    player.sendMessage(ChatColor.translateAlternateColorCodes('&', message));
                     return true;
                 } else {
                     player.sendMessage(String.format(ChatColor.RED + "%s is not a valid type, try 'normal' or 'bounce'", strings[0]));

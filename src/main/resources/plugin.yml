@@ -1,5 +1,5 @@
 name: FancyCam2
-version: 0.2
+version: 1.2.2
 main: FancyCam.MainClass
 commands:
   addloop:
