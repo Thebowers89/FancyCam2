@@ -78,7 +78,7 @@ public class LoopHandler {
         if (cameras.containsKey(player.getUniqueId())) {
             cameras.get(player.getUniqueId()).removeCamera();
             cameras.get(player.getUniqueId()).stop();
-            player.sendMessage("Stopping Loop...");
+            player.sendMessage("Stopping loop...");
         } else {
             player.sendMessage(ChatColor.RED + "Loop does not exist!");
         }

@@ -24,7 +24,7 @@ public class LoopCommand implements CommandExecutor {
                         return true;
                     } else if (strings[0].equalsIgnoreCase("remove")) {
                         LoopHandler.removeLoop(id);
-                        player.sendMessage(ChatColor.translateAlternateColorCodes('&', "&c&lRemoved loop with id of: &r&4" + id));
+                        player.sendMessage(ChatColor.translateAlternateColorCodes('&', "&c&nRemoved loop with id of:&e&l " + id));
                         return true;
                     }
                 } else if (strings.length == 1) {

@@ -35,7 +35,7 @@ public class MainClass extends JavaPlugin {
     }
 
     private void registerCommands() {
-        getCommand("looptest").setExecutor(new SaveLoops());
+        getCommand("saveloops").setExecutor(new SaveLoops());
         getCommand("addloop").setExecutor(new AddLoopCommand());
         getCommand("loop").setExecutor(new LoopCommand());
         getCommand("editloop").setExecutor(new EditLoopCommand());
