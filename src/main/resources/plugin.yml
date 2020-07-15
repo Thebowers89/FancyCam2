@@ -11,3 +11,6 @@ commands:
   editloop:
     usage: "Usage: /editloop <id> <stat> <newvalue>"
     description:
+  saveloops:
+    usage: "Usage: /saveloops"
+    description: "This command is used to save all current loops to file.\nWhen you remove a loop you should execute this command."

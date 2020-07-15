@@ -10,6 +10,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
 
+import static FancyCam.MainClass.saveFile;
 import static FancyCam.Utils.Utils.getHeading;
 import static FancyCam.Utils.Utils.getPitch;
 
@@ -21,6 +22,7 @@ public class Loop implements Runnable {
     private int i;
     private BukkitTask bt;
 
+    // Keep type around for when i print out a specific loop's stats
     private String type;
     private Location origin;
     private double radius;
@@ -88,6 +90,20 @@ public class Loop implements Runnable {
             camera.teleport(loop.get(i));
             i++;
         }
+    }
+
+    public void saveLoop() {
+        String prefix = "Loops." + this.id;
+        saveFile.setPathPrefix(prefix);
+        saveFile.set("type", this.type);
+        saveFile.set("radius", this.radius);
+        saveFile.set("height", this.height);
+        saveFile.set("speed", this.speed);
+        saveFile.set("frequency", this.frequency);
+        saveFile.set("origin.world", this.origin.getWorld().getName());
+        saveFile.set("origin.x", this.origin.getX());
+        saveFile.set("origin.y", this.origin.getY());
+        saveFile.set("origin.z", this.origin.getZ());
     }
 
     public Location getOrigin() {
