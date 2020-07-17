@@ -11,8 +11,10 @@ public class SaveLoops implements  CommandExecutor {
     public boolean onCommand(CommandSender commandSender, Command command, String s, String[] strings) {
         if (commandSender instanceof Player) {
             Player player = (Player) commandSender;
-            LoopHandler.saveLoops();
-            player.sendMessage("Saving loops");
+            if (player.hasPermission("FancyCam.saveloops") || player.isOp()) {
+                LoopHandler.saveLoops();
+                player.sendMessage("Saving loops");
+            }
         }
         return false;
     }
