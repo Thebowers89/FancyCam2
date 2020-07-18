@@ -42,6 +42,10 @@ public class Loop implements Runnable {
         this.frequency = frequency;
     }
 
+    public String getStats() {
+        return String.format("&6Showing stats of loop: &a%s\n  &6Type: &a%s\n  &6Radius:  &a%s\n  &6Height:  &a%s\n  &6Speed: &a%s\n  &6Frequency: &a%s", this.id, this.type, this.radius, this.height, this.speed, this.frequency);
+    }
+
     public String getId() {
         return this.id;
     }

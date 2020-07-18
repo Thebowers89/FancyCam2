@@ -26,6 +26,13 @@ public class LoopCommand implements CommandExecutor {
                         LoopHandler.removeLoop(id);
                         player.sendMessage(ChatColor.translateAlternateColorCodes('&', "&c&nRemoved loop with id of:&e&l " + id));
                         return true;
+                    } else if (strings[0].equalsIgnoreCase("list")) {
+                        if (LoopHandler.doesExist(id)) {
+                            player.sendMessage(ChatColor.translateAlternateColorCodes('&', LoopHandler.getLoop(id).getStats()));
+                        } else {
+                            player.sendMessage(ChatColor.RED + "That loop does not exist!");
+                        }
+                        return true;
                     }
                 } else if (strings.length == 1) {
                     if (strings[0].equalsIgnoreCase("stop")) {

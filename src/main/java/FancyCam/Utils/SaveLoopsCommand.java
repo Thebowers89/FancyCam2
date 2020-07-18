@@ -5,7 +5,7 @@ import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 
-public class SaveLoops implements  CommandExecutor {
+public class SaveLoopsCommand implements  CommandExecutor {
 
     @Override
     public boolean onCommand(CommandSender commandSender, Command command, String s, String[] strings) {
@@ -13,7 +13,8 @@ public class SaveLoops implements  CommandExecutor {
             Player player = (Player) commandSender;
             if (player.hasPermission("FancyCam.saveloops") || player.isOp()) {
                 LoopHandler.saveLoops();
-                player.sendMessage("Saving loops");
+                player.sendMessage("Saving loops... Please check the console for any errors!");
+                return true;
             }
         }
         return false;
